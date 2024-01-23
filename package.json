@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "webpack serve --mode=production",
     "dev": "webpack serve --mode=development",
@@ -13,9 +14,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "knockout": "^3.5.1"
+    "knockout": "^3.5.1",
+    "knockout-store": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "babel-jest": "^29.7.0",
     "css-loader": "^6.9.1",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",

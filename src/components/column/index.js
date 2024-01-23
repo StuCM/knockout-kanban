@@ -1,5 +1,5 @@
 import ko from 'knockout';
-import ColumnViewModel from './column.viewModel';
+import ColumnViewModel from './column.viewModel.js';
 import ColumnView from './column.view.html';
 
 ko.components.register('column', {
