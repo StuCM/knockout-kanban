@@ -1,3 +1,6 @@
-<div class="task" data-bind="dragZone: { name: 'tasks', data: $data }">
+<div class="task">
     <h3 data-bind="text: title"></h3>
+    <button data-bind="click: handleRemoveTask">
+        <i class="fas fa-trash"></i>
+    </button>
 </div>

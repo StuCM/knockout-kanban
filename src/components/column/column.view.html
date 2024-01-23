@@ -3,5 +3,5 @@
     <span data-bind="text:'Tasks: ' + tasks().length"></span>
 </div>
 <div data-bind="foreach: tasks">
-    <Task params="title: $data.title"></Task>
+    <Task params="title: $data.title, id: $data.id, boardId: board "></Task>
 </div>

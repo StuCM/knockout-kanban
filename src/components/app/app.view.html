@@ -1,4 +1,3 @@
-
-<column params="title: 'To Do'"></column>
-<column params="title: 'In Progress'"></column>
-<column params="title: 'Done'"></column>
+<!-- ko foreach: state.boards -->
+    <column params="title: $data.title, id: $data.id"></column>
+<!-- /ko -->
