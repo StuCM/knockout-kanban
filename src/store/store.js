@@ -42,6 +42,9 @@ function removeTask(taskId, boardId) {
 
 async function fetchTasks() {
     const tasks = await getTasksFromDb();
+    if (!tasks) {
+        return;
+    }
     tasks.forEach(task => {
         addTask(task, task.board);
     });
