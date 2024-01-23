@@ -11,7 +11,6 @@ const state = {
 };
 
 setState(state);
-console.log("State", getState())
 
 //add task to a board
 function addTask(task, boardId) {
@@ -20,6 +19,15 @@ function addTask(task, boardId) {
         throw new Error(`Board ${boardId} not found`);
     }
     board.tasks.push(task);
+};
+
+function updateTask(taskId, newTitle, newBoard) {
+    const board = state.boards.find(board => board.id === parseInt(newBoard));
+    let task = board.tasks[taskId];
+    if (task) {
+        task.title = newTitle;
+        task.board = newBoard;
+    }
 };
 
 //remove task from a board
@@ -39,4 +47,4 @@ async function fetchTasks() {
     });
 }
 
-export { state, addTask, removeTask, fetchTasks };
+export { state, addTask, removeTask, fetchTasks, updateTask };

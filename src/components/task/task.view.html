@@ -1,6 +1,12 @@
 <div class="task">
-    <h3 data-bind="text: title"></h3>
-    <button data-bind="click: handleRemoveTask">
-        <i class="fas fa-trash"></i>
-    </button>
+    <h3 data-bind="text: title, click: () => isEditing(true), visible: !isEditing()"></h3>
+    <input type="text" data-bind="value: title, event: { blur: () => { handleEditTask; isEditing(false) } }, visible: isEditing">
+    <div>
+        <button data-bind="click: () => isEditing(!isEditing())">
+            <i class="fas fa-pen"></i>
+        </button>
+        <button data-bind="click: handleRemoveTask">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
 </div>

@@ -20,9 +20,9 @@
       "board": "1"
     },
     {
-      "id": "2",
-      "title": "Task 2",
-      "board": "1"
+      "title": "Changed",
+      "board": "1",
+      "id": "2"
     },
     {
       "id": "3",
