@@ -15,14 +15,14 @@
   ],
   "tasks": [
     {
-        "id": "1",
-        "title": "Task 2",
-        "board": "1"
-    },
-    {
-      "id": "2",
+      "id": "1",
       "title": "Task 2",
       "board": "1"
+    },
+    {
+      "title": "Changed",
+      "board": "1",
+      "id": "2"
     },
     {
       "id": "3",
@@ -43,6 +43,16 @@
       "id": "6",
       "title": "Task 6",
       "board": "3"
+    },
+    {
+      "id": "39f3",
+      "title": "This is a new task",
+      "board": 1
+    },
+    {
+      "id": "6ea9",
+      "title": "I need to finish this",
+      "board": 1
     }
   ]
 }

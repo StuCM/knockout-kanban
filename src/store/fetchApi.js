@@ -2,10 +2,10 @@
 export async function getTasksFromDb(id) {
     try {
         if(id){
-            const response = fetch(`http://localhost:3000/tasks/${id}`)
+            const response = await fetch(`http://localhost:3000/tasks/${id}`)
             return response.json();
         } else {
-            const response = fetch(`http://localhost:3000/tasks`)
+            const response = await fetch(`http://localhost:3000/tasks`)
             return response.json();
         }
     } catch (error) {
@@ -23,6 +23,36 @@ export async function addTaskToDb(task) {
             headers: {
                 'Content-Type': 'application/json'
             }
+        });
+        return response.json();
+    } catch (error) {
+        console.error('Error', error);
+        return null;
+    }
+}
+
+// update a task in db
+export async function updateTaskInDb(taskId, updatedTask) {
+    try {
+        const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {
+            method: 'PUT',
+            body: JSON.stringify(updatedTask),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return response.json();
+    } catch (error) {
+        console.error('Error', error);
+        return null;
+    }
+}
+
+// delete a task from db
+export async function deleteTaskFromDb(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+            method: 'DELETE',
         });
         return response.json();
     } catch (error) {
