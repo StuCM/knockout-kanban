@@ -1,8 +1,8 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack from 'webpack';
 
-module.exports = (env, options) => {
+export default (env, options) => {
   const isDevelopment = options.mode === 'development';
 
   return {
