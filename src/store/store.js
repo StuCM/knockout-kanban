@@ -39,7 +39,4 @@ async function fetchTasks() {
     });
 }
 
-fetchTasks();
-console.log("State", state.boards[0].tasks() )
-
-export { state, addTask, removeTask };
+export { state, addTask, removeTask, fetchTasks };
