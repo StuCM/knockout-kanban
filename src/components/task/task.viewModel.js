@@ -1,5 +1,6 @@
 import ko from 'knockout';
 import { removeTask } from '../../store/store.js';
+import { deleteTaskFromDb } from '../../store/fetchApi.js';
 
 export default function TaskViewModel(params) {
     var self = this;
@@ -11,5 +12,6 @@ export default function TaskViewModel(params) {
 
     self.handleRemoveTask = function(task) {
         removeTask(self.id(), self.boardId());
+        deleteTaskFromDb(self.id());
     }
 }

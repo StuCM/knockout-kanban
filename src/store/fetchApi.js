@@ -30,3 +30,16 @@ export async function addTaskToDb(task) {
         return null;
     }
 }
+
+// delete a task from db
+export async function deleteTaskFromDb(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+            method: 'DELETE',
+        });
+        return response.json();
+    } catch (error) {
+        console.error('Error', error);
+        return null;
+    }
+}

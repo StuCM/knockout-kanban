@@ -1,7 +1,15 @@
-<div class="column-header">
-    <h2 data-bind="text: title"></h2>
-    <span data-bind="text:'Tasks: ' + tasks().length"></span>
-</div>
-<div data-bind="foreach: tasks">
-    <Task params="title: $data.title, id: $data.id, boardId: board "></Task>
+<div class="column-container">
+    <div class="column-header">
+        <h2 data-bind="text: title"></h2>
+        <span data-bind="text:'Tasks: ' + tasks().length"></span>
+    </div>
+    <div data-bind="foreach: tasks">
+        <Task params="title: $data.title, id: $data.id, boardId: board "></Task>
+    </div>
+    <div class="add-task">
+        <input class="add-task-input" type="text" data-bind="value: newTaskTitle" placeholder="Add new task">
+        <button data-bind="click: addTask">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
 </div>
