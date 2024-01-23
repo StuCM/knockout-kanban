@@ -23,10 +23,10 @@ function addTask(task, boardId) {
 };
 
 //remove task from a board
-function removeTask(task, boardName) {
-    const board = state.boards.find(board => board.title === boardName);
+function removeTask(task, boardId) {
+    const board = state.boards.find(board => board.id === parseInt(boardId));
     if (!board) {
-        throw new Error(`Board ${boardName} not found`);
+        throw new Error(`Board ${boardId} not found`);
     }
     board.tasks.remove(task);
 }

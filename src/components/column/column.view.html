@@ -1,4 +1,7 @@
-<h2 data-bind="text: title">Hello</h2>
+<div class="column-header">
+    <h2 data-bind="text: title"></h2>
+    <span data-bind="text:'Tasks: ' + tasks().length"></span>
+</div>
 <div data-bind="foreach: tasks">
     <Task params="title: $data.title"></Task>
 </div>

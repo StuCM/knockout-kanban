@@ -5,5 +5,6 @@ import './components/column/column.css';
 import './components/app/index.js'
 import './components/app/app.css';
 import './components/task/index.js'
+import './components/task/task.css';
 
 ko.applyBindings();
