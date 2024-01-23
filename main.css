@@ -28,6 +28,37 @@ column {
     -webkit-box-shadow: -1px 7px 12px 0px rgba(0,0,0,0.16);
     -moz-box-shadow: -1px 7px 12px 0px rgba(0,0,0,0.16);
 }
+
+.column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.add-task{
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.add-task input {
+    flex-grow: 1;
+    margin-right: 10px;
+    height: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid #aaa;
+    padding: 0 1.2rem;
+}
 app {
     display: flex;
     justify-content: space-between;
@@ -36,4 +67,28 @@ app {
     padding: 5rem;
     margin: 0;
     background-color: #f1f1f1;
+}
+.task {
+    background-color: #dfdfdf;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    border-radius: 1rem;
+}
+
+button {
+    margin-left: 0.6rem;
+    height: 1rem;
+    width: 1rem;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+button i:hover {
+    color: grey;
 }
