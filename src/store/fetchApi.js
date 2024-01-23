@@ -2,10 +2,10 @@
 export async function getTasksFromDb(id) {
     try {
         if(id){
-            const response = fetch(`http://localhost:3000/tasks/${id}`)
+            const response = await fetch(`http://localhost:3000/tasks/${id}`)
             return response.json();
         } else {
-            const response = fetch(`http://localhost:3000/tasks`)
+            const response = await fetch(`http://localhost:3000/tasks`)
             return response.json();
         }
     } catch (error) {
