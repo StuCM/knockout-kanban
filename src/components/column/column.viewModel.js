@@ -1,13 +1,15 @@
 import ko from 'knockout';
-import { state, addTask } from '../../store/store.js';
+import { connect } from 'knockout-store';
+import { addTask } from '../../store/store.js';
 import { addTaskToDb } from '../../store/fetchApi.js';
 
-export default function ColumnViewModel(params) {
+function ColumnViewModel(params) {
     var self = this;
+    console.log(params.title)
     self.title = ko.observable(params.title);
-    self.id = ko.observable(params.id);
+    //self.id = ko.observable(params.id);
     self.tasks = ko.computed(() => {
-        const board = state.boards.find(board => board.title === this.title());
+        const board = params.boards().find(board => board.title === self.title());
         return board ? board.tasks() : [];
     });
     self.newTaskTitle = ko.observable('');
@@ -25,5 +27,10 @@ export default function ColumnViewModel(params) {
         addTask(newTask, self.id());
         self.newTaskTitle('');
     }
-
 }
+
+function mapStateToParams({ boards }) {
+    return { boards };
+}
+
+export default connect(mapStateToParams)(ColumnViewModel);
