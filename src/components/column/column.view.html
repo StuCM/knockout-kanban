@@ -1,4 +1,4 @@
-<div class="column-container">
+<div class="column-container" data-bind="event: { dragover: handleDragOver, drop: handleDrop }"">
     <div class="column-header">
         <h2 data-bind="text: title"></h2>
         <span data-bind="text:'Tasks: ' + tasks().length"></span>

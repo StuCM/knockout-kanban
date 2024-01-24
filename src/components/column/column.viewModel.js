@@ -1,7 +1,7 @@
 import ko from 'knockout';
 import { connect } from 'knockout-store';
-import { addTask } from '../../store/store.js';
-import { addTaskToDb } from '../../store/fetchApi.js';
+import { addTask, updateTask } from '../../store/store.js';
+import { addTaskToDb, updateTaskInDb } from '../../store/fetchApi.js';
 
 function ColumnViewModel(params) {
     var self = this;
@@ -26,6 +26,23 @@ function ColumnViewModel(params) {
         const newTask = await addTaskToDb(task)
         addTask(newTask, self.id());
         self.newTaskTitle('');
+    }
+
+    self.handleDragStart = function(event) {
+        return;
+    }
+
+    self.handleDragOver = function(event) {
+        
+    }
+
+    self.handleDrop = function(column, event) {
+        event.preventDefault();
+        const taskData = event.dataTransfer.getData('text/plain');
+        const task = JSON.parse(taskData);
+        console.log("drop", task)
+        updateTask(task.id, task.title, self.id());
+        updateTaskInDb(task.id, {title: task.title, board: self.id()});
     }
 }
 

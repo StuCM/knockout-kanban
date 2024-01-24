@@ -17,7 +17,13 @@ export default function TaskViewModel(params) {
     }
 
     self.handleEditTask = function() {
-        updateTask(self.id(), self.title(), self.boardId());0.
+        updateTask(self.id(), self.title(), self.boardId());
         updateTaskInDb(self.id(), {title: self.title(), board: self.boardId()});
+    }
+
+    self.handleDragStart = function(task, event) {
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/plain', ko.toJSON(task));
+        return true;
     }
 }
