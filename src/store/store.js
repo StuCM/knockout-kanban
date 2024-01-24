@@ -16,21 +16,36 @@ setState(state);
 function addTask(task, boardId) {
     if(!boardId) { return }
     const board = state.boards().find(board => board.id === parseInt(boardId));
-    console.log("add task", state.boards(), boardId)
     if (!board) {
         throw new Error(`Board ${boardId} not found`);
     }
     board.tasks.push(task);
 };
 
-function updateTask(taskId, newTitle, newBoard) {
-    const board = state.boards().find(board => board.id === parseInt(newBoard));
-    let task = board.tasks[taskId];
-    if (task) {
-        task.title = newTitle;
-        task.board = newBoard;
+function updateTask(taskId, newTitle, newBoardId) {
+    const currentBoard = state.boards().find(board => board.tasks().some(task => task.id === taskId));
+    if (!currentBoard) {
+        throw new Error(`Task ${taskId} not found`);
     }
+
+    const task = currentBoard.tasks().find(task => task.id === taskId);
+
+    task.title = newTitle;
+
+    if (currentBoard.id === parseInt(newBoardId)) {
+        return;
+    }
+
+    const newBoard = state.boards().find(board => board.id === parseInt(newBoardId));
+    if (!newBoard) {
+        throw new Error(`Board ${newBoardId} not found`);
+    }
+
+    currentBoard.tasks.remove(task);
+
+    newBoard.tasks.push(task);
 };
+
 
 //remove task from a board
 function removeTask(taskId, boardId) {
