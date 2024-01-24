@@ -1,3 +1,3 @@
-<!-- ko foreach: state.boards -->
-    <column params="title: $data.title, id: $data.id"></column>
-<!-- /ko -->
+<div class="app-container" data-bind="foreach: boards">
+    <column params="title: $data.title"></column>
+<div>
