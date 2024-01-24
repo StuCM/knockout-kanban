@@ -4,7 +4,6 @@ import { fetchTasks } from '../../store/store.js';
 
 function AppViewModel(params) {
     self.boards = params.boards;
-    console.log("Apps", self.boards()[0])
 
     fetchTasks();
 }

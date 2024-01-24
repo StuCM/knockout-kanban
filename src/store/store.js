@@ -14,7 +14,9 @@ setState(state);
 
 //add task to a board
 function addTask(task, boardId) {
+    if(!boardId) { return }
     const board = state.boards().find(board => board.id === parseInt(boardId));
+    console.log("add task", state.boards(), boardId)
     if (!board) {
         throw new Error(`Board ${boardId} not found`);
     }

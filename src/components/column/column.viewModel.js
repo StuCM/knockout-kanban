@@ -7,7 +7,7 @@ function ColumnViewModel(params) {
     var self = this;
     console.log(params.title)
     self.title = ko.observable(params.title);
-    //self.id = ko.observable(params.id);
+    self.id = ko.observable(params.id);
     self.tasks = ko.computed(() => {
         const board = params.boards().find(board => board.title === self.title());
         return board ? board.tasks() : [];
