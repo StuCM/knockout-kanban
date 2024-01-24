@@ -8,6 +8,7 @@ const state = {
         {id: 2, title: 'In Progress', tasks: ko.observableArray([]) },
         {id: 3, title: 'Done', tasks: ko.observableArray([]) },
     ]),
+    taskSizeLarge: ko.observable(false),
 };
 
 setState(state);
@@ -67,4 +68,8 @@ async function fetchTasks() {
     });
 }
 
-export { state, addTask, removeTask, fetchTasks, updateTask };
+function toggleTaskSizeLarge(value) {
+    state.taskSizeLarge(value);
+}
+
+export { state, addTask, removeTask, fetchTasks, updateTask, toggleTaskSizeLarge };

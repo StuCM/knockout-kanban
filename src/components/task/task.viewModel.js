@@ -1,16 +1,18 @@
 import ko from 'knockout';
-import { removeTask, updateTask } from '../../store/store.js';
+import { removeTask, updateTask, state } from '../../store/store.js';
 import { deleteTaskFromDb, updateTaskInDb } from '../../store/fetchApi.js';
+import { connect } from 'knockout-store';
 
-export default function TaskViewModel(params) {
+function TaskViewModel(params) {
     var self = this;
     self.title = ko.observable(params.title);
     self.id = ko.observable(params.id);
     self.boardId = ko.observable(params.boardId);
     self.isEditing = ko.observable(false);
-
-    console.log("BoardId", self.boardId())
-
+    self.taskSizeLarge = ko.computed(() => {
+        return state.taskSizeLarge();
+    })
+    
     self.handleRemoveTask = function() {
         removeTask(self.id(), self.boardId());
         deleteTaskFromDb(self.id());
@@ -27,3 +29,9 @@ export default function TaskViewModel(params) {
         return true;
     }
 }
+
+function mapStateToParams({ taskSizeLarge }) {
+    return { taskSizeLarge };
+}
+
+export default connect(mapStateToParams)(TaskViewModel);    
