@@ -11,13 +11,13 @@ export default function TaskViewModel(params) {
 
     console.log("BoardId", self.boardId())
 
-    self.handleRemoveTask = function(task) {
+    self.handleRemoveTask = function() {
         removeTask(self.id(), self.boardId());
         deleteTaskFromDb(self.id());
     }
 
-    self.handleEditTask = function(task) {
-        updateTask(self.id(), self.title(), self.boardId());
+    self.handleEditTask = function() {
+        updateTask(self.id(), self.title(), self.boardId());0.
         updateTaskInDb(self.id(), {title: self.title(), board: self.boardId()});
     }
 }
