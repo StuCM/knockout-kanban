@@ -12,6 +12,7 @@ function TaskViewModel(params) {
     self.taskSizeLarge = ko.computed(() => {
         return state.taskSizeLarge();
     })
+    self.isFocused = ko.observable(false);
     
     self.handleRemoveTask = function() {
         removeTask(self.id(), self.boardId());
