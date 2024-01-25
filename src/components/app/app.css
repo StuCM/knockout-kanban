@@ -49,10 +49,10 @@ label {
 label:after {
 	content: '';
 	position: absolute;
-	top: 1px;
+	top: 2.5px;
 	left: 2.5px;
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 	background: #6b9eff;
 	border-radius: 18px;
 	transition: 0.3s;
@@ -63,7 +63,7 @@ input:checked + label {
 }
 
 input:checked + label:after {
-	left: calc(100% - 2px);
+	left: calc(100% - 2.5px);
 	transform: translateX(-100%);
 }
 
