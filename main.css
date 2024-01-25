@@ -11,16 +11,47 @@ body {
     margin: 0;
 }
 
+h2, h3, p {
+    color: #484848;
+}
+
+h1 {
+    color: white;
+    margin-left: 2rem;
+}
+
 h2 {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 1rem;
 }
 
+button {
+    margin: 0.4rem;
+    height: 1rem;
+    width: 1rem;
+    border: none;
+    background: none;
+    outline: none;
+    color: grey;
+}
+
+button i:hover {
+    color: #333;
+}
+
 .flex {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.white-text {
+    color: white !important;
+}
+
+.bold {
+    font-weight: 600;
 }
 column {
     display: flex;
@@ -29,7 +60,6 @@ column {
     background-color: #fff;
     border-radius: 20px;
     margin: 0;
-    padding: 20px;
     box-shadow: -1px 7px 12px 0px rgba(0,0,0,0.16);
     -webkit-box-shadow: -1px 7px 12px 0px rgba(0,0,0,0.16);
     -moz-box-shadow: -1px 7px 12px 0px rgba(0,0,0,0.16);
@@ -47,6 +77,8 @@ column {
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 .add-task{
@@ -60,16 +92,16 @@ column {
 .add-task input {
     flex-grow: 1;
     margin-right: 10px;
-    height: 2rem;
-    border-radius: 1.5rem;
-    border: 1px solid #aaa;
+    height: 2.5rem;
+    border-radius: 0.8rem;
+    border: none;
     padding: 0 1.2rem;
 }
 app {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: #f1f1f1;
+    background-color: #f9fbff;
 }
 
 .app-container {
@@ -89,6 +121,11 @@ app {
     align-items: center;
     width: 100%;
     padding: 1rem 3rem;
+	background-color: #6b9eff;
+}
+
+.header > * > span {
+	font-weight: 600;
 }
 
 input[type=checkbox]{
@@ -102,7 +139,7 @@ label {
 	text-indent: -9999px;
 	width: 40px;
 	height: 20px;
-	background: grey;
+	background: white;
 	display: block;
 	border-radius: 20px;
 	position: relative;
@@ -111,21 +148,21 @@ label {
 label:after {
 	content: '';
 	position: absolute;
-	top: 1px;
+	top: 2.5px;
 	left: 2.5px;
-	width: 18px;
-	height: 18px;
-	background: #fff;
+	width: 16px;
+	height: 16px;
+	background: #6b9eff;
 	border-radius: 18px;
 	transition: 0.3s;
 }
 
 input:checked + label {
-	background: #bada55;
+	background: #daff66;
 }
 
 input:checked + label:after {
-	left: calc(100% - 2px);
+	left: calc(100% - 2.5px);
 	transform: translateX(-100%);
 }
 
@@ -173,18 +210,4 @@ label:active:after {
     -webkit-line-clamp: 1; 
     -webkit-box-orient: vertical;
     -webkit-box-align: center;
-}
-
-button {
-    margin-left: 0.6rem;
-    height: 1rem;
-    width: 1rem;
-    border: none;
-    background: none;
-    outline: none;
-    color: grey;
-}
-
-button i:hover {
-    color: black;
 }
