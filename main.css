@@ -16,6 +16,12 @@ h2 {
     font-weight: 600;
     margin: 1rem;
 }
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 column {
     display: flex;
     flex-direction: column;
@@ -127,7 +133,7 @@ label:active:after {
 	width: 26px;
 }
 .task {
-    background-color: #dfdfdf;
+    background-color: #ffffff;
     width: 100%;
     height: auto;
     min-height: 60px;
@@ -145,7 +151,22 @@ label:active:after {
     width: 80%;
 }
 
+.task-title input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #ececec;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+.task-large {
+    min-height: 50px;
+}
+
 .truncate {
+    min-height: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -161,8 +182,9 @@ button {
     border: none;
     background: none;
     outline: none;
+    color: grey;
 }
 
 button i:hover {
-    color: grey;
+    color: black;
 }
