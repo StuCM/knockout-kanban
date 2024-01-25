@@ -12,14 +12,45 @@ body {
     margin: 0;
 }
 
+h2, h3, p {
+    color: #484848;
+}
+
+h1 {
+    color: white;
+    margin-left: 2rem;
+}
+
 h2 {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 1rem;
 }
 
+button {
+    margin: 0.4rem;
+    height: 1rem;
+    width: 1rem;
+    border: none;
+    background: none;
+    outline: none;
+    color: grey;
+}
+
+button i:hover {
+    color: #333;
+}
+
 .flex {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.white-text {
+    color: white !important;
+}
+
+.bold {
+    font-weight: 600;
 }
