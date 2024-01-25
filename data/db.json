@@ -1,0 +1,48 @@
+{
+  "boards": [
+    {
+      "id": "1",
+      "title": "To Do"
+    },
+    {
+      "id": "2",
+      "title": "In Progress"
+    },
+    {
+      "id": "3",
+      "title": "Done"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Write project proposal",
+      "board": 1,
+      "id": "1"
+    },
+    {
+      "title": "Develop project timeline",
+      "board": 3,
+      "id": "2"
+    },
+    {
+      "title": "Design project logo",
+      "board": 2,
+      "id": "3"
+    },
+    {
+      "title": "Review project budget",
+      "board": 1,
+      "id": "4"
+    },
+    {
+      "title": "Prepare project presentation",
+      "board": 1,
+      "id": "5"
+    },
+    {
+      "title": "Submit project report",
+      "board": 3,
+      "id": "6"
+    }
+  ]
+}
