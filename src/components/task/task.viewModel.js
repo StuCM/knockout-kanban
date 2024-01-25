@@ -4,8 +4,8 @@ import { deleteTaskFromDb, updateTaskInDb } from '../../store/fetchApi.js';
 import { connect, getState } from 'knockout-store';
 
 function TaskViewModel(params) {
-    const state = getState();
     var self = this;
+    const state = getState();
     self.title = ko.observable(params.title);
     self.id = ko.observable(params.id);
     self.boardId = ko.observable(params.boardId);
@@ -15,21 +15,22 @@ function TaskViewModel(params) {
     })
     self.isFocused = ko.observable(false);
 
-    self.taskInState = ko.computed(() => {
+    self.updateBoardId = ko.computed(() => {
         let task;
+        //find the task in the state
         state().boards().some(board => {
             task = board.tasks().find(t => t.id == self.id());
             if (task) {
-                self.boardId(board.id);
-                return true; // stop searching once the task is found
+                self.boardId(board.id); //update the boardId
+                return true;
             }
         });
-        console.log(self.boardId());
-        return task;
     });
     
     self.handleRemoveTask = function() {
+        //update the store
         removeTask(self.id(), self.boardId());
+        //update the database
         try {
             deleteTaskFromDb(self.id());
         } catch (error) {
@@ -39,9 +40,9 @@ function TaskViewModel(params) {
     }
 
     self.handleEditTask = function() {
-        console.log("edit task", self.boardId())
+        //update the store
         updateTask(self.id(), self.title(), self.boardId());
-        console.log(self.id(), self.title(), self.boardId())
+        //update the database
         try {
             updateTaskInDb(self.id(), {title: self.title(), board: self.boardId()});
         } catch (error) {

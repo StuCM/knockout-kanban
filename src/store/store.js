@@ -1,5 +1,5 @@
 import ko from 'knockout';
-import { setState, getState } from 'knockout-store';
+import { setState } from 'knockout-store';
 import { getTasksFromDb } from './fetchApi.js';
 
 const state = {
@@ -24,31 +24,30 @@ function addTask(task, boardId) {
 };
 
 function updateTask(taskId, newTitle, newBoardId) {
+    //get the current board
     const currentBoard = state.boards().find(board => board.tasks().some(task => task.id === taskId));
     if (!currentBoard) {
         throw new Error(`Task ${taskId} not found`);
     }
-
+    //get the task
     const task = currentBoard.tasks().find(task => task.id === taskId);
-
+    //update the title
     task.title = newTitle;
-
+    //check if the board has changed
     if (currentBoard.id === parseInt(newBoardId)) {
         return;
     }
-
+    //get the new board
     const newBoard = state.boards().find(board => board.id === parseInt(newBoardId));
     if (!newBoard) {
         throw new Error(`Board ${newBoardId} not found`);
     }
-
+    //update to the correct board
     currentBoard.tasks.remove(task);
 
     newBoard.tasks.push(task);
 };
 
-
-//remove task from a board
 function removeTask(taskId, boardId) {
     const board = state.boards().find(board => board.id === parseInt(boardId));
     if (!board) {

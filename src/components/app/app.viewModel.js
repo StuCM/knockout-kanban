@@ -1,12 +1,13 @@
 import ko from 'knockout';
-import { connect, setState } from 'knockout-store';
+import { connect } from 'knockout-store';
 import { fetchTasks, toggleTaskSizeLarge } from '../../store/store.js';
 
 function AppViewModel(params) {
+    const self = this;
     self.boards = params.boards;
     self.taskSize = ko.observable(false);
 
-    self.taskSize.subscribe(function() {
+    self.taskSize.subscribe(() => {
         toggleTaskSizeLarge(self.taskSize())
     })
 

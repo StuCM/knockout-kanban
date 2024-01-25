@@ -1,11 +1,10 @@
 import ko from 'knockout';
-import { connect, getState } from 'knockout-store';
+import { connect } from 'knockout-store';
 import { addTask, updateTask } from '../../store/store.js';
 import { addTaskToDb, updateTaskInDb } from '../../store/fetchApi.js';
 
 function ColumnViewModel(params) {
-    var self = this;
-    console.log(params.title)
+    const self = this;
     self.title = ko.observable(params.title);
     self.id = ko.observable(params.id);
     self.tasks = ko.computed(() => {
@@ -14,21 +13,21 @@ function ColumnViewModel(params) {
     });
     self.newTaskTitle = ko.observable('');
 
-    self.generateId = function() {
-        return Date.now();
-    }
-
     self.addTask = async function() {
         if (self.newTaskTitle() === '') {
             return;
         }
+        //create a new task and generate id
         const task = {
             id: new Date().getTime(),
             title: self.newTaskTitle(),
             board: self.id(),
         };
+        //reset the input field
         self.newTaskTitle('');
+        //update the store
         addTask(task, self.id());
+        //update the database
         try {
             await addTaskToDb(task);
         } catch (error) {
@@ -41,16 +40,23 @@ function ColumnViewModel(params) {
     }
 
     self.handleDragOver = function(event) {
-        
+        return;
     }
 
-    self.handleDrop = function(column, event) {
+    self.handleDrop = function(_column, event) {
         event.preventDefault();
+        //get the task data
         const taskData = event.dataTransfer.getData('text/plain');
         const task = JSON.parse(taskData);
-        console.log("drop", task.id, task.title, self.id())
+        //update the store
         updateTask(task.id, task.title, self.id());
-        updateTaskInDb(task.id, {title: task.title, board: self.id()});
+        //update the database
+        try {
+            updateTaskInDb(task.id, {title: task.title, board: self.id()});
+        } catch (error) {
+            console.error('Error', error);
+        }
+        
     }
 
     self.generateColorFromId = function() {
