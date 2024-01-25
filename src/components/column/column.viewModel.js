@@ -44,6 +44,15 @@ function ColumnViewModel(params) {
         updateTask(task.id, task.title, self.id());
         updateTaskInDb(task.id, {title: task.title, board: self.id()});
     }
+
+    self.generateColorFromId = function() {
+        const id = self.id();
+        const hashedId = id * 2654435761 % 2**32; // Knuth's multiplicative method
+        const hue = hashedId % 361;
+        console.log(`hsl(${hue}, 100%, 93%)`)
+        return `hsl(${hue}, 100%, 93%)`;
+    }
+    self.color = ko.observable(self.generateColorFromId());
 }
 
 function mapStateToParams({ boards }) {
