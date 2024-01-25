@@ -17,7 +17,12 @@
     width: 80%;
 }
 
+.task-large {
+    min-height: 50px;
+}
+
 .truncate {
+    min-height: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

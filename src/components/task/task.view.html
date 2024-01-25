@@ -1,6 +1,6 @@
 <div class="task" draggable="true" data-bind="event: { dragstart: handleDragStart }">
     <div class="task-title">
-        <h3 data-bind="text: title, click: () => isEditing(true), visible: !isEditing(), css: { truncate : taskSizeLarge() === false }"></h3>
+        <h3 data-bind="text: title, click: () => isEditing(true), visible: !isEditing(), css: taskSizeLarge() ? 'task-large' : 'truncate'"></h3>
         <input type="text" data-bind="value: title, event: { blur: () => { handleEditTask(); isEditing(false) } }, visible: isEditing">
     </div>
 
