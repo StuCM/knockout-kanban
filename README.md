@@ -5,11 +5,8 @@ This is a simple Kanban board made using Knockout.js
 This board incorporates several features:
 
 - Ability to add and remove tasks
-- 
-- Drag and drop feature between the boards
-- 
+- Drag and drop feature between the board
 - Edit each task in line
-- 
 - Toggle task size
   
 ### Installation
