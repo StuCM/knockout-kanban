@@ -1,5 +1,5 @@
 import ko from 'knockout';
-import { connect } from 'knockout-store';
+import { connect, getState } from 'knockout-store';
 import { addTask, updateTask } from '../../store/store.js';
 import { addTaskToDb, updateTaskInDb } from '../../store/fetchApi.js';
 
@@ -19,13 +19,21 @@ function ColumnViewModel(params) {
     }
 
     self.addTask = async function() {
+        if (self.newTaskTitle() === '') {
+            return;
+        }
         const task = {
+            id: new Date().getTime(),
             title: self.newTaskTitle(),
             board: self.id(),
         };
-        const newTask = await addTaskToDb(task)
-        addTask(newTask, self.id());
         self.newTaskTitle('');
+        addTask(task, self.id());
+        try {
+            await addTaskToDb(task);
+        } catch (error) {
+            console.error('Error', error);
+        }
     }
 
     self.handleDragStart = function(event) {
@@ -40,7 +48,7 @@ function ColumnViewModel(params) {
         event.preventDefault();
         const taskData = event.dataTransfer.getData('text/plain');
         const task = JSON.parse(taskData);
-        console.log("drop", task)
+        console.log("drop", task.id, task.title, self.id())
         updateTask(task.id, task.title, self.id());
         updateTaskInDb(task.id, {title: task.title, board: self.id()});
     }
