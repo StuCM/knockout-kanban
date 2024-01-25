@@ -50,3 +50,7 @@ button i:hover {
 .white-text {
     color: white !important;
 }
+
+.bold {
+    font-weight: 600;
+}
