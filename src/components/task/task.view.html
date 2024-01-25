@@ -1,11 +1,11 @@
 <div class="task" draggable="true" data-bind="event: { dragstart: handleDragStart }">
     <div class="task-title">
-        <h3 data-bind="text: title, click: () => isEditing(true), visible: !isEditing(), css: { truncate : taskSizeLarge() === false }"></h3>
-        <input type="text" data-bind="value: title, event: { blur: () => { handleEditTask(); isEditing(false) } }, visible: isEditing">
+        <p data-bind="text: title, visible: !isEditing(), css: taskSizeLarge() ? 'task-large' : 'truncate'"></p>
+        <input type="text" data-bind="value: title, event: { blur: () => { handleEditTask(); isEditing(false); isFocused(false) } }, visible: isEditing, hasFocus: isFocused()">
     </div>
 
-    <div>
-        <button data-bind="click: () => isEditing(!isEditing())">
+    <div class="flex">
+        <button data-bind="click: () => { isEditing(!isEditing()); isFocused(true) }">
             <i class="fas fa-pen"></i>
         </button>
         <button data-bind="click: handleRemoveTask">

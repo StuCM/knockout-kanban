@@ -45,9 +45,9 @@
       "board": "3"
     },
     {
-      "id": "39f3",
-      "title": "This is a new task",
-      "board": 1
+      "title": "This is a new task this is a really long task name to test truncate",
+      "board": 1,
+      "id": "39f3"
     }
   ]
 }
