@@ -27,6 +27,20 @@ h2 {
     margin: 1rem;
 }
 
+button {
+    margin: 0.4rem;
+    height: 1rem;
+    width: 1rem;
+    border: none;
+    background: none;
+    outline: none;
+    color: grey;
+}
+
+button i:hover {
+    color: #333;
+}
+
 .flex {
     display: flex;
     align-items: center;
