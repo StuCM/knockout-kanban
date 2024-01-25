@@ -12,6 +12,15 @@ body {
     margin: 0;
 }
 
+h2, h3, p {
+    color: #484848;
+}
+
+h1 {
+    color: white;
+    margin-left: 2rem;
+}
+
 h2 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -22,4 +31,8 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.white-text {
+    color: white !important;
 }

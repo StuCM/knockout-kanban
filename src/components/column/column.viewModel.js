@@ -47,10 +47,9 @@ function ColumnViewModel(params) {
 
     self.generateColorFromId = function() {
         const id = self.id();
-        const hashedId = id * 2654435761 % 2**32; // Knuth's multiplicative method
+        const hashedId = id * 2654438762 % 2**32; // Knuth's multiplicative method
         const hue = hashedId % 361;
-        console.log(`hsl(${hue}, 100%, 93%)`)
-        return `hsl(${hue}, 100%, 93%)`;
+        return `hsl(${hue}, 100%, 82%)`;
     }
     self.color = ko.observable(self.generateColorFromId());
 }
